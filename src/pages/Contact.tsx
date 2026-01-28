@@ -76,7 +76,7 @@ const Contact = () => {
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  @mehndibyayesha
+                  @mehndibyameena
                 </a>
               </div>
             </div>

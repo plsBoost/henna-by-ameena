@@ -13,7 +13,7 @@ const Footer = () => {
             to="/" 
             className="inline-block font-heading text-2xl md:text-3xl font-medium text-foreground"
           >
-            Mehndi by Ayesha
+            Mehndi by Ameena
           </Link>
 
           {/* Tagline */}
@@ -59,7 +59,7 @@ const Footer = () => {
               Serving Irvine & Orange County, California
             </p>
             <p className="text-xs text-muted-foreground/70">
-              © {currentYear} Mehndi by Ayesha. All rights reserved.
+              © {currentYear} Mehndi by Ameena. All rights reserved.
             </p>
           </div>
         </div>

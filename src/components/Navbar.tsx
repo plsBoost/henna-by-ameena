@@ -22,7 +22,7 @@ const Navbar = () => {
           to="/" 
           className="font-heading text-xl md:text-2xl font-medium text-foreground tracking-wide"
         >
-          Mehndi by Ayesha
+          Mehndi by Ameena
         </Link>
 
         {/* Desktop Navigation */}
