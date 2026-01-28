@@ -42,9 +42,9 @@ const Footer = () => {
 
           {/* Social Links */}
           <div className="flex justify-center gap-4">
-            <a 
-              href="https://instagram.com" 
-              target="_blank" 
+            <a
+              href="https://instagram.com/mehndibyameena"
+              target="_blank"
               rel="noopener noreferrer"
               className="p-2 text-muted-foreground hover:text-primary transition-colors"
               aria-label="Instagram"

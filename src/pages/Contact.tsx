@@ -1,16 +1,28 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone, Instagram, MapPin } from "lucide-react";
+import { useScrollAnimation, useStaggeredAnimation } from "@/hooks/useScrollAnimation";
 
-const WHATSAPP_NUMBER = "14155551234";
+const WHATSAPP_NUMBER = "19492058051";
 const WHATSAPP_MESSAGE = encodeURIComponent("Hi! I'd like to inquire about booking mehndi for an event.");
 const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
 const Contact = () => {
+  const { ref: heroRef, isVisible: heroVisible } = useScrollAnimation();
+  const { ref: whatsappRef, isVisible: whatsappVisible } = useScrollAnimation();
+  const { containerRef: contactsRef, visibleItems: contactsVisible } = useStaggeredAnimation(2, 150);
+  const { ref: locationRef, isVisible: locationVisible } = useScrollAnimation();
+  const { ref: noteRef, isVisible: noteVisible } = useScrollAnimation();
+
   return (
     <main className="pt-20 md:pt-24">
       {/* Hero */}
       <section className="section-padding bg-card">
-        <div className="container-narrow text-center space-y-6">
+        <div
+          ref={heroRef}
+          className={`container-narrow text-center space-y-6 transition-all duration-700 ${
+            heroVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+          }`}
+        >
           <div className="gold-divider" />
           <h1 className="heading-hero text-foreground">Contact</h1>
           <p className="text-body text-muted-foreground max-w-xl mx-auto">
@@ -24,11 +36,16 @@ const Contact = () => {
         <div className="container max-w-2xl">
           <div className="space-y-8">
             {/* WhatsApp - Primary */}
-            <div className="bg-card p-8 md:p-10 rounded-sm shadow-soft border border-border/50 text-center space-y-6">
+            <div
+              ref={whatsappRef}
+              className={`bg-card p-8 md:p-10 rounded-sm shadow-soft border border-border/50 text-center space-y-6 transition-all duration-700 ${
+                whatsappVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+              }`}
+            >
               <div className="w-16 h-16 mx-auto rounded-full bg-[#25D366]/10 flex items-center justify-center">
                 <MessageCircle className="text-[#25D366]" size={32} />
               </div>
-              
+
               <div className="space-y-2">
                 <h2 className="heading-card text-foreground">WhatsApp</h2>
                 <p className="text-sm text-muted-foreground">
@@ -49,30 +66,38 @@ const Contact = () => {
             </div>
 
             {/* Other Contact Methods */}
-            <div className="grid sm:grid-cols-2 gap-4">
+            <div ref={contactsRef} className="grid sm:grid-cols-2 gap-4">
               {/* Phone */}
-              <div className="bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3">
+              <div
+                className={`bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3 transition-all duration-700 ${
+                  contactsVisible[0] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+                }`}
+              >
                 <div className="w-12 h-12 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
                   <Phone className="text-primary" size={22} />
                 </div>
                 <h3 className="text-sm font-body font-medium text-foreground">Phone</h3>
-                <a 
-                  href="tel:+14155551234" 
+                <a
+                  href="tel:+19492058051"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
-                  (415) 555-1234
+                  (949) 205-8051
                 </a>
               </div>
 
               {/* Instagram */}
-              <div className="bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3">
+              <div
+                className={`bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3 transition-all duration-700 ${
+                  contactsVisible[1] ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+                }`}
+              >
                 <div className="w-12 h-12 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
                   <Instagram className="text-primary" size={22} />
                 </div>
                 <h3 className="text-sm font-body font-medium text-foreground">Instagram</h3>
-                <a 
-                  href="https://instagram.com" 
-                  target="_blank" 
+                <a
+                  href="https://instagram.com/mehndibyameena"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-muted-foreground hover:text-primary transition-colors"
                 >
@@ -82,7 +107,12 @@ const Contact = () => {
             </div>
 
             {/* Location */}
-            <div className="bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3">
+            <div
+              ref={locationRef}
+              className={`bg-card p-6 rounded-sm shadow-soft border border-border/50 text-center space-y-3 transition-all duration-700 ${
+                locationVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+              }`}
+            >
               <div className="w-12 h-12 mx-auto rounded-full bg-primary/10 flex items-center justify-center">
                 <MapPin className="text-primary" size={22} />
               </div>
@@ -100,9 +130,14 @@ const Contact = () => {
 
       {/* Response Time Note */}
       <section className="py-12 bg-card border-t border-border">
-        <div className="container-narrow text-center space-y-4">
+        <div
+          ref={noteRef}
+          className={`container-narrow text-center space-y-4 transition-all duration-700 ${
+            noteVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-5"
+          }`}
+        >
           <p className="text-sm text-muted-foreground max-w-md mx-auto">
-            I typically respond within a few hours during business hours. 
+            I typically respond within a few hours during business hours.
             For urgent inquiries close to your event date, please mention it in your message.
           </p>
         </div>
